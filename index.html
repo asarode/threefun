@@ -2,8 +2,41 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>TeeHee</title>
+    <style>
+      .input-container {
+        position: absolute;
+        margin-top: 20px;
+        width: 100%;
+        text-align: center;
+      }
+
+      .field-text {
+        border-radius: 3px;
+        display: inline-block;
+        width: 90%;
+        max-width: 520px;
+        padding: 12px;
+        font-size: 18px;
+        border: none;
+        box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+        transform: scale(0.8) translateY(0px);
+        transition: all 400ms ease;
+      }
+
+      .field-text:focus,
+      .field-text:active,
+      .field-text:focus:active {
+        outline: none;
+        transform: scale(1) translateY(6px);
+        box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.1);
+        transition: all 400ms ease;
+      }
+    </style>
 </head>
 <body style="margin: 0">
+  <div class="input-container">
+    <input id="medium-link" type="text" class="field-text"/>
+  </div>
   <script src="dist/bundle.js"></script>
 </body>
 </html>

@@ -1,26 +1,32 @@
-import THREE from 'three'
+import view from './view'
 
-var scene = new THREE.Scene()
-var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000)
-
-var renderer = new THREE.WebGLRenderer()
-renderer.setSize(window.innerWidth, window.innerHeight)
-document.body.appendChild(renderer.domElement)
-
-var geometry = new THREE.BoxGeometry(1, 1, 1)
-var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 })
-var cube = new THREE.Mesh(geometry, material)
-scene.add(cube)
-
-camera.position.z = 5
-
-var render = function () {
-  requestAnimationFrame(render)
-
-  cube.rotation.x += 0.001
-  cube.rotation.y += 0.01
-
-  renderer.render(scene, camera)
+export default function main() {
+  document.addEventListener('DOMContentLoaded', onDOMContentLoaded)
+  view()
 }
 
-render()
+let mediumLinkButton
+
+function onDOMContentLoaded(e) {
+  mediumLinkButton = document.querySelector('#medium-link')
+
+  // -()---()-()--()----()--()- key press events
+  // -()----------()----()----- filter for enter key
+  // -()----------()----------- map to medium link in input
+  // ----()----------()-------- map to response from GET for article text
+  //      \           \      
+  //       \           --()---- transform to stream emitting streams of
+  //        --()----            certain transformed text data
+  //                            subscribe to these streams from the view
+
+  document.addEventListener('keypress', onKeyPress)
+}
+
+function onKeyPress(e) {
+  const code = e.keyCode || e.which
+  if (code === 13) {
+    console.log(mediumLinkButton.value)
+  }
+}
+
+main()
